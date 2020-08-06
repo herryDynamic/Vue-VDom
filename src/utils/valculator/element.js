@@ -6,11 +6,13 @@ function Element(type, props, children) {
 }
 
 // 创建虚拟DOM
+// vue中createElement是document类型中
 function createElement(type, props, children) {
     return new Element(type, props, children);
 }
 
 
+// 映射为真实dom
 function renderDom(dom) {
     // 根据type类型来创建对应的元素
     let el = document.createElement(dom.type);
@@ -22,7 +24,7 @@ function renderDom(dom) {
     }
 
     // 遍历子节点
-    // // 如果子节点也是虚拟DOM，递归构建DOM节点
+    // 如果子节点也是虚拟DOM，递归构建DOM节点
     // 不是就代表是文本节点，直接创建
     dom.children.forEach(child => {
         child = (child instanceof Element) ? renderDom(child) : document.createTextNode(child);

@@ -15,19 +15,21 @@ export default {
     // HelloWorld,
   },
   mounted() {
-    this.VDOMFunction();
+    this.createVDom();
   },
   methods: {
-    VDOMFunction() {
+    //创建VDOM
+    createVDom() {
+      // 创建节点
       let V_DOM = createElement("ul", { class: "list" }, [
         createElement("li", { class: "item" }, ["item1"]),
         createElement("li", { class: "item" }, ["item2"]),
         createElement("li", { class: "item" }, ["item3"]),
       ]);
 
-      console.log(V_DOM);
-      var el = renderDom(V_DOM);
-      console.log(el);
+      console.log(V_DOM); // 打印虚拟dom节点
+      var el = renderDom(V_DOM); // 生成真实dom
+      console.log(el); // 打印生成的dom节点
       document.body.appendChild(el); // 向elemente最后一个节点后添加此内容
     },
   },
